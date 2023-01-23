@@ -27,7 +27,7 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       if @document.save
-        format.html { redirect_to project_documents_url(@document.project) }
+        format.html { redirect_to project_documents_path(@document.project) }
         format.json { render :show, status: :created, location: @document }
       else
         format.html { render :new, status: :unprocessable_entity }
