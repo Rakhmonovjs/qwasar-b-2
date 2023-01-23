@@ -1,0 +1,102 @@
+<%= form_with(model: project) do |form| %>
+  <% if project.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+        <% project.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block", class: "project_label-name" %>
+    <%= form.text_field :name, class: "project_inp" %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block", class: "project_label-desc" %>
+    <%= form.text_area :description, class: "project_inp" %>
+  </div>
+
+  <div>
+    <%= form.text_field :user_id, value: current_user.id,type: :hidden %>
+  </div>
+
+  <div>
+    <%= form.submit class: "project_btn" %>
+  </div>
+<% end %>
+
+<style>
+  body{
+    background-color: #fffff0;
+  }
+  .project_label-name{
+    font-family: arial, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-right: 243px;
+  }
+  .project_label-desc{
+    font-family: arial, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-right: 210px;
+  }
+  .project_inp{
+    width: 300px;
+    padding: 12px 20px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    display: inline-block;
+    border: 1px solid #191970;
+    border-radius: 10px;
+    box-sizing: border-box;
+    outline: none;
+    resize: none;
+  }
+  .project_inp:focus{
+    box-shadow: 5px 10px 20px #e6e6fa;
+  }
+
+.project_btn {
+  appearance: none;
+  background-color: #FFFFFF;
+  border-radius: 40em;
+  border-style: none;
+  box-shadow: #ADCFFF 0 -12px 6px inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  outline: none;
+  padding: 10px 12px;
+  quotes: auto;
+  text-align: center;
+  text-decoration: none;
+  transition: all .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.project_btn:hover {
+  background-color: #FFC229;
+  box-shadow: #FF6314 0 -6px 8px inset;
+  transform: scale(1.125);
+}
+
+.project_btn:active {
+  transform: scale(1.025);
+}
+  
+</style>

@@ -1,0 +1,209 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="documents_wrap">
+  <h1 class="title">Documents</h1>
+
+  <%= form_with(model: @document) do |form| %>
+
+    <div>
+      <%= form.label :title, style: "display: block", class: "doc_label" %>
+      <%= form.text_field :title, class: "doc_inp" %>
+    </div>
+    <div>
+    
+    <%= form.file_field :doc, class: "file_inp" %>
+    
+    </div>
+      <%= form.text_field :project_id, value: @project.id, type: :hidden %>
+
+    <div>
+      <%= form.submit class: "create_doc" %>
+    </div>
+  <% end %>
+
+
+  <div id="documents">
+    <% @documents.each do |document| %>
+      <%= render document %>
+      <p>
+        <%= link_to "Delete", document, 'data-turbo-method': :delete, class: "doc_delete" %>
+      </p>
+    <% end %>
+  </div>
+
+
+  <br>
+
+  <%= link_to "Back", project_path(@project), class: "back_doc" %>
+</div>
+
+
+<style>
+  body{
+    background-color: #fffff0;
+  }
+  .documents_wrap{
+    width: 700px;
+    margin: 0 auto;
+    padding: 0 30px;
+  }
+  .title{
+    margin: 0;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  .doc_label{
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 500;
+    color: #000;
+  }
+  .doc_inp{
+    width: 275px;
+    padding: 8px 16px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    display: inline-block;
+    border: 1px solid #191970;
+    border-radius: 10px;
+    box-sizing: border-box;
+    outline: none;
+    resize: none;
+  }
+  .doc_inp:focus{
+    box-shadow: 5px 10px 20px #e6e6fa;
+  }
+
+  .file_inp{
+    padding: 10px;
+    /* background-color: #afeeee;
+    border: none; */
+    border-radius: 15px;
+    cursor: pointer;
+  }
+
+  .create_doc {
+    background-color: #0078d0;
+    border: 0;
+    border-radius: 56px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-family: system-ui,-apple-system,system-ui,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    outline: 0;
+    padding: 8px 12px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  .create_doc:before {
+    background-color: initial;
+    background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+    border-radius: 125px;
+    content: "";
+    height: 50%;
+    left: 4%;
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    transition: all .3s;
+    width: 92%;
+  }
+
+  .create_doc:hover {
+    box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+    transform: scale(1.05);
+  }
+
+  .doc_delete {
+    background: #e62143;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 10px;
+    display: flex;
+    font-family: Mija,-apple-system,BlinkMacSystemFont,Roboto,"Roboto Slab","Droid Serif","Segoe UI",system-ui,Arial,sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    justify-content: center;
+    line-height: 1.3;
+    padding: 10px 12px;
+    text-align: center;
+    text-decoration: none;
+    text-decoration-skip-ink: auto;
+    text-shadow: rgba(0, 0, 0, .3) 1px 1px 1px;
+    text-underline-offset: 1px;
+    transition: all .2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100px;
+    word-break: break-word;
+    border: 0;
+  }
+
+  .doc_delete:active,
+  .doc_delete:focus {
+    border-bottom-style: none;
+    border-color: #dadada;
+    box-shadow: rgba(0, 0, 0, .3) 0 3px 3px inset;
+    outline: 0;
+  }
+
+  .doc_delete:hover {
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    transform: translateY(-2px);
+    opacity: 0.8;
+  }
+
+  .back_doc {
+    background: grey;
+    border: 1px solid grey;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    height: 20;
+    outline: 0;
+    width: 100px;
+    padding: 8px 12px;
+    margin-left: auto;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    text-decoration: none;
+  }
+
+  .back_doc:hover,
+  .back_doc:active {
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    transform: translateY(-2px);
+    opacity: 0.8;
+  }
+
+  .back_doc:active {
+    opacity: .5;
+  }
+</style>

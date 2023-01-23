@@ -1,0 +1,85 @@
+<div class="edit_wrap">
+  <h1>Editing project</h1>
+
+  <%= render "form", project: @project %>
+
+  <br>
+
+  <div>
+    <%= link_to "Show this project", @project, class: "show_project" %> 
+    <%= link_to "Back to projects", projects_path, class: "back_project" %>
+  </div>
+</div>
+
+<style>
+  .edit_wrap{
+    text-align: center;
+  }
+  .show_project {
+    align-items: center;
+    margin-right: 25px;
+    background: #f5f5fa;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: -10px -10px 30px 0 #fff,10px 10px 30px 0 #1d0dca17;
+    box-sizing: border-box;
+    color: #2a1f62;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    justify-content: center;
+    padding: 8px 10px;
+    position: relative;
+    transition: .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    text-decoration: none;
+    white-space: pre;
+    width: max-content;
+    word-break: normal;
+    word-spacing: normal;
+  }
+
+  .show_project:hover {
+    background: #f8f8ff;
+    box-shadow: -15px -15px 30px 0 #fff, 15px 15px 30px 0 #1d0dca17;
+    border: 1px solid grey;
+  }
+
+  .back_project {
+    background: grey;
+    border: 1px solid grey;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    height: 20;
+    outline: 0;
+    padding: 8px 10px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    text-decoration: none;
+  }
+
+  .back_project:hover,
+  .back_project:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: grey;
+  }
+
+  .back_project:active {
+    opacity: .5;
+  }
+</style>

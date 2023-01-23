@@ -1,0 +1,84 @@
+<%= form_with(model: bucket) do |form| %>
+  <% if bucket.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(bucket.errors.count, "error") %> prohibited this bucket from being saved:</h2>
+
+      <ul>
+        <% bucket.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="edit_input-wrap">
+    <%= form.label :name, style: "display: block", class:"buck_label" %>
+    <%= form.text_field :name, class:"buck_input" %>
+  </div>
+
+  <div>
+  
+  <% if action_name == "new" %>
+    <%= form.text_field :project_id, value: Project.find(params[:project_id]).id, type: :hidden %>
+  <% end %>
+  
+  </div>
+
+  <div>
+    <%= form.submit class: "edit_btn" %>
+  </div>
+<% end %>
+
+<style>
+  .edit_input-wrap{
+    /* margin: 0 auto; */
+    text-align: center;
+  }
+  .buck_label{
+    margin-right: 150px;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: bold;
+    color: #000;
+  }
+  .buck_input{
+    width: 200px;
+    padding: 8px 10px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    display: inline-block;
+    border: 1px solid #191970;
+    border-radius: 10px;
+    box-sizing: border-box;
+    outline: none;
+    resize: none;
+  }
+  .buck_input:focus{
+    box-shadow: 5px 10px 20px #e6e6fa;
+  }
+  .edit_btn {
+    margin: 0 auto;
+    background-color: #4149e1;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-size: 12px;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    justify-content: center;
+    padding: 9px 11px;
+    text-decoration: none;
+    width: 100px;
+    border: 0;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  .edit_btn:hover {
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    transform: translateY(-2px);
+    opacity: 0.8;
+  }
+</style>

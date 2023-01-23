@@ -1,0 +1,195 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="message_wrap">
+  <div class="message_title-wrap">
+    <h1 class="message_title">Message Boards</h1>
+    <%= link_to "New Message Board", new_project_bucket_path(Project.find(params[:project_id])), class:"new_message" %>
+  </div>
+
+
+  <div id="buckets">
+    <% @buckets.each do |bucket| %>
+    
+    <% if bucket.project == Project.find(params[:project_id]) %>
+      
+    
+      <%= render bucket %>
+        <p>
+          <%= link_to "Show", project_bucket_path(bucket.project,bucket), class:"messasge_show" %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+
+
+  <%= link_to  "Back", project_path(Project.find(params[:project_id])), class: "back_message" %>
+</div>
+
+
+<style>
+  body{
+      background-color: #fffff0;
+  }
+  .message_wrap{
+    width: 800px;
+    margin: 0 auto;
+  }
+  .message_title-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+  .message_title{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .new_message {
+    display: block;
+    width: 115px;
+    padding: 8px 10px;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .new_message:before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing-new_project 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+  }
+
+  @keyframes glowing-new_project {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 400% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+
+  .new_message:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #228B22;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+
+  .back_message {
+    background: grey;
+    border: 1px solid grey;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    height: 20;
+    outline: 0;
+    padding: 8px 10px;
+    margin-left: auto;
+    width: 115px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    text-decoration: none;
+  }
+
+  .back_message:hover,
+  .back_message:active {
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    transform: translateY(-2px);
+    opacity: 0.8;
+  }
+
+  .back_message:active {
+    opacity: .5;
+  }
+
+  .messasge_show {
+    align-items: center;
+    /* margin: 0 auto; */
+    margin-left: 135px;
+    margin-bottom: 40px;
+    background: #f5f5fa;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: -10px -10px 30px 0 #fff,10px 10px 30px 0 #1d0dca17;
+    box-sizing: border-box;
+    color: #2a1f62;
+    cursor: pointer;
+    display: flex;
+    font-size: 14px;
+    justify-content: center;
+    line-height: 1.2;
+    padding: 12px;
+    position: relative;
+    text-align: left;
+    transition: .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    text-decoration: none;
+    white-space: pre;
+    width: max-content;
+    word-break: normal;
+    word-spacing: normal;
+  }
+
+  .messasge_show:hover {
+    background: #f8f8ff;
+    box-shadow: -15px -15px 30px 0 #fff, 15px 15px 30px 0 #1d0dca17;
+    border: 1px solid grey;
+  }
+</style>

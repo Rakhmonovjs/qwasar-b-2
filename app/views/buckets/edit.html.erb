@@ -1,0 +1,95 @@
+<div class="edit_wrap">
+  <h1 class="edit_title">Editing bucket</h1>
+
+  <%= render "form", bucket: @bucket %>
+
+  <br>
+
+  <div class="edit_btn-wrap">
+    <%= link_to "Show this bucket", @bucket, class:"show_buck" %>
+    <%= link_to "Back to buckets", project_bucket_path(@bucket.project, @bucket), class:"back_buck" %>
+  </div>
+</div>
+
+<style>
+ body{
+    background-color: #fffff0;
+  }
+  .edit_wrap{
+    width: 700px;
+    margin: 0 auto;  
+  }
+  .edit_title{  
+    text-align: center;
+  }
+  .edit_btn-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .show_buck {
+    align-items: center;
+    /* margin-right: 20px; */
+    background: #f5f5fa;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: -10px -10px 30px 0 #fff,10px 10px 30px 0 #1d0dca17;
+    box-sizing: border-box;
+    color: #2a1f62;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 8px 10px;
+    position: relative;
+    text-align: left;
+    transition: .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    text-decoration: none;
+    white-space: pre;
+    width: max-content;
+    word-break: normal;
+    word-spacing: normal;
+  }
+
+  .show_buck:hover {
+    background: #f8f8ff;
+    box-shadow: -15px -15px 30px 0 #fff, 15px 15px 30px 0 #1d0dca17;
+    border: 1px solid grey;
+  }
+  .back_buck {
+    background: grey;
+    border: 1px solid grey;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    height: 20;
+    outline: 0;
+    padding: 8px 10px;
+    width: 115px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    text-decoration: none;
+  }
+
+  .back_buck:hover,
+  .back_buck:active {
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    transform: translateY(-2px);
+    opacity: 0.8;
+  }
+
+  .back_buck:active {
+    opacity: .5;
+  }
+</style>

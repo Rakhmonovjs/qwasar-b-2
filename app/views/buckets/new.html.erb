@@ -1,0 +1,62 @@
+<div class="new_board-wrap">
+  <h1 class="new_title">New Message Board</h1>
+
+  <%= render "form", bucket: @bucket %>
+
+  <br>
+
+  <div>
+    <% @project = Project.find(params[:project_id]) %>
+    <%= link_to "Back to buckets", project_buckets_path(@project), class:"back_buck" %>
+  </div>
+</div>
+
+<style>
+ body{
+    background-color: #fffff0;
+  }
+  .new_board-wrap{
+    width: 600px;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .new_title{
+      /* text-align: center; */
+  }
+  .back_buck {
+    width: 120px;
+    text-align: center;
+    margin-left: auto;
+    background: grey;
+    border: 1px solid grey;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    outline: 0;
+    padding: 8px 10px;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    text-decoration: none;
+  }
+
+  .back_buck:hover,
+  .back_buck:active {
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    transform: translateY(-2px);
+    opacity: 0.8;
+  }
+
+  .back_buck:active {
+    opacity: .5;
+  }
+</style>

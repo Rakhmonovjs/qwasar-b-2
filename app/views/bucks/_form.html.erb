@@ -1,0 +1,104 @@
+<%= form_with(model: buck) do |form| %>
+  <% if buck.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(buck.errors.count, "error") %> prohibited this buck from being saved:</h2>
+
+      <ul>
+        <% buck.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="buck_wrap">
+    <%= form.label :name, style: "display: block", class: "buck_label" %>
+    <%= form.text_field :name, required: true, class:"buck_input" %>
+    <%= form.submit class: "message_btn" %>
+  </div>
+
+  <div class="result_buck">
+    <%= form.text_field :bucket_id, type: :hidden %>
+  </div>
+
+<% end %>
+
+<style>
+  .buck_wrap{
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .buck_label{
+    margin-right: 260px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: bold;
+    color: #000;
+  }
+  .buck_input{
+    width: 200px;
+    margin-right: 20px;
+    padding: 8px 10px;
+    display: inline-block;
+    border: 1px solid #191970;
+    border-radius: 10px;
+    box-sizing: border-box;
+    outline: none;
+    resize: none;
+  }
+  .message_btn-wrap{
+    text-align: center;
+  }
+
+  .message_btn {
+    display: block;
+    margin: 0 auto;
+    appearance: none;
+    backface-visibility: hidden;
+    background-color: #27ae60;
+    border-radius: 8px;
+    border-style: none;
+    box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: normal;
+    outline: none;
+    overflow: hidden;
+    padding: 8px 10px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transform: translate3d(0, 0, 0);
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+  }
+
+  .message_btn:hover {
+    background-color: #1e8449;
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: .35s;
+  }
+
+  .message_btn:active {
+    transform: translateY(2px);
+    transition-duration: .35s;
+  }
+
+  .message_btn:hover {
+    box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+  }
+  .result_buck{
+    background: #000;
+  }
+</style>

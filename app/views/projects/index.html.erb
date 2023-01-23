@@ -1,0 +1,197 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="wrap_project">
+  <div class="title_wrap">
+    <h1 class="title">Projects</h1>
+    <%= link_to "New project", new_project_path, class: "new_project" %>
+  </div>
+
+  <div id="projects" class="project_res">
+    <% @projects.each do |project| %>
+    <% if project.user == current_user %>
+      
+      <%= render project %>
+      <p>
+        <%= link_to "Show this project", project, class: "show_project" %>
+      </p>
+    <% end %>
+    <% end %>
+    
+    <a class="back_project" href="/">Back to projects</a>
+
+  </div>
+
+</div>
+
+<style>
+  body{
+    background-color: #fffff0;
+  }
+  .title_wrap{
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .project_res{
+    width: 650px;
+    display: block;
+    margin: 0 auto;
+    text-align: left;
+    /* border: 1px solid red; */
+  }
+
+  .wrap_project{
+    text-align: center;
+  }
+  .title{
+    color: #191970;
+    margin: 0;
+  }
+
+  .new_project {
+    display: block;
+    width: 100px;
+    padding: 0.6em 2em;
+    border: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    text-decoration: none;
+  }
+
+  .new_project:before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing-new_project 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+  }
+
+  @keyframes glowing-new_project {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 400% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+
+  .new_project:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #222;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+  .show_project {
+    align-items: center;
+    margin-bottom: 40px;
+    background: #f5f5fa;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: -10px -10px 30px 0 #fff,10px 10px 30px 0 #1d0dca17;
+    box-sizing: border-box;
+    color: #2a1f62;
+    cursor: pointer;
+    display: flex;
+    font-size: 14px;
+    justify-content: center;
+    line-height: 1.2;
+    padding: 12px;
+    position: relative;
+    text-align: left;
+    transition: .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    text-decoration: none;
+    white-space: pre;
+    width: max-content;
+    word-break: normal;
+    word-spacing: normal;
+  }
+
+  .show_project:hover {
+    background: #f8f8ff;
+    box-shadow: -15px -15px 30px 0 #fff, 15px 15px 30px 0 #1d0dca17;
+    border: 1px solid grey;
+  }
+
+ .back_project {
+    background: grey;
+    border: 1px solid grey;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    height: 20;
+    outline: 0;
+    padding: 8px 10px;
+    margin-left: auto;
+    width: 115px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    text-decoration: none;
+  }
+
+  .back_project:hover,
+  .back_project:active {
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    transform: translateY(-2px);
+    opacity: 0.8;
+  }
+
+  .back_project:active {
+    opacity: .5;
+  }
+
+</style>

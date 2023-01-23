@@ -1,0 +1,71 @@
+<div class="todo_wrap">
+  <div class="mb-6">
+    <h1 class="font-bold text-4xl">Todo List</h1>
+  </div>
+
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+  <%= render "form", list: List.new %>
+
+  <div id="lists" class="todo_list">
+    <%= render @lists %>
+  </div>
+
+  <%= link_to  "Back", project_path(Project.find(params[:project_id])), class: "todo_back" %>
+  
+</div>
+
+
+<style>
+  body{
+    background-color: #fffff0;
+  }
+  .todo_wrap{
+    text-align: center;
+  }
+  .todo_list{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  .todo_back {
+    width: 100px;
+    display: block;
+    margin: 0 auto;
+    margin-right: 525px;
+    text-align: center;
+    background: grey;
+    border: 1px solid grey;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    height: 20;
+    outline: 0;
+    padding: 8px 10px;
+    /* text-align: center; */
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    text-decoration: none;
+  }
+
+  .todo_back:hover,
+  .todo_back:active {
+      box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+      transform: translateY(-2px);
+      transition: 0.3s ease;
+  }
+
+  .todo_back:active {
+    opacity: .5;
+  }
+</style>

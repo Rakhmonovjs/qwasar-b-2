@@ -1,0 +1,87 @@
+
+<div class="login-wrap">
+  <h2 class="title_login">Log in</h2>
+  
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :email, class: "login_label email_login" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "login_input" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, class: "login_label" %><br />
+    <%= f.password_field :password, autocomplete: "current-password", class: "login_input" %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field login_remember">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Log in", class: "login_btn" %>
+    </div>
+  <% end %>
+
+  <%= link_to "Sign up", new_registration_path(resource_name), class: "sign_up-login" %><br />
+</div>
+
+
+<style>
+  body{
+    background-color: #fffaf0;
+  }
+  /* .login-wrap{
+    width: 500px;
+    border: 1px solid #000;
+  } */
+  .title_login{
+    text-align: center;
+    margin-top: 5%;
+  }
+  .field, .actions{
+    text-align: center;
+  }
+  .sign_up-login{
+    display: block;
+    text-align: center;
+  }
+  .login_label{
+    margin-right: 221px;
+  }
+  .email_login{
+    margin-right: 240px;
+  }
+  .login_input{
+    width: 300px;
+    padding: 12px 20px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    outline: none;
+  }
+  .login_input:focus{
+    box-shadow: 5px 10px 20px #e6e6fa;
+  }
+  .login_remember{
+    margin-right: 175px;
+  }
+  .login_btn{
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 16px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 200px;
+  }
+  .login_btn:hover{
+    opacity: 0.8;
+  }
+</style>

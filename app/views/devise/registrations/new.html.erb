@@ -1,0 +1,91 @@
+<h2 class="title_sign">Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email, class: "sign_email" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "sign_input" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, class: "sign_password" %>
+    <% if @minimum_password_length %>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password", class: "sign_input" %>
+    <em class="password_character">(<%= @minimum_password_length %> characters minimum)</em>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, class: "sign_label" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "sign_input" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up",class: "sign_btn" %>
+  </div>
+<% end %>
+
+<%= link_to "Log in", new_session_path(resource_name), class: "sign_up-login" %><br />
+
+<style>
+  body{
+      background-color: #fffaf0;
+    }
+  .title_sign{
+     text-align: center;
+      margin-top: 5%;
+  }
+  .sign_email{
+    margin-right: 242px;
+    padding-top: 10px;
+  }
+  .sign_label{
+    margin-right: 135px;
+    padding-top: 10px;
+  }
+  .sign_password{
+    margin-right: 224px;
+    padding-top: 10px;
+  }
+  .password_character{
+    display: block;
+    margin-right: 138px;
+    font-size: 14px;
+  }
+  .sign_input{
+    width: 300px;
+    padding: 12px 20px;
+    margin-top: 10px;
+    /* margin-bottom: 25px; */
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    outline: none;
+  }
+  .sign_input:focus{
+    box-shadow: 5px 10px 20px #e6e6fa;
+  }
+  .field, .actions{
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  .sign_up-login{
+    display: block;
+    text-align: center;
+  }
+  .sign_btn{
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 16px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 200px;
+  }
+  .sign_btn:hover{
+    opacity: 0.8;
+  }
+</style>

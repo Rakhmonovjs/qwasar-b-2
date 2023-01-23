@@ -1,0 +1,184 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @bucket %>
+
+<div class="show_btn-wrap">
+  <%= link_to "Edit", edit_bucket_path(@bucket), class:"buck_btn-edit" %>
+  <%= button_to "Destroy", @bucket, method: :delete, class:"buck_btn-del" %>
+  <%= link_to "Back", project_buckets_path(@bucket.project), class:"buck_btn-back" %>
+</div>
+
+
+
+<div>
+  <%= render "bucks/form", buck: @buck %>
+</div>
+
+<div id="bucks">
+  <% @bucks.each do |buck| %>
+  <% if buck.bucket == @bucket %>
+    
+    <div class="buck_input-val">
+      <%= buck.name %>
+      <%= button_to "Destroy this buck", buck, method: :delete, class:"buck_delete" %>
+    </div>
+  <% end %>
+  <% end %>
+</div>
+
+<style>
+ body{
+    background-color: #fffff0;
+  }
+  .show_btn-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+
+  .buck_btn-edit {
+    background-color: #4149e1;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-size: 12px;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    justify-content: center;
+    padding: 9px 11px;
+    text-decoration: none;
+    width: 100px;
+    border: 0;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  .buck_btn-edit:hover {
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    transform: translateY(-2px);
+    opacity: 0.8;
+  }
+  .buck_btn-back {
+    background: grey;
+    border: 1px solid grey;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    outline: 0;
+    padding: 8px 10px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    text-decoration: none;
+  }
+
+  .buck_btn-back:hover,
+  .buck_btn-back:active {
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    transform: translateY(-2px);
+    opacity: 0.8;
+  }
+
+  .buck_btn-back:active {
+    opacity: .5;
+  }
+
+  .buck_btn-del {
+    background: #e62143;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 10px;
+    display: flex;
+    font-family: Mija,-apple-system,BlinkMacSystemFont,Roboto,"Roboto Slab","Droid Serif","Segoe UI",system-ui,Arial,sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    justify-content: center;
+    padding: 8px 10px;
+    text-align: center;
+    text-decoration: none;
+    text-decoration-skip-ink: auto;
+    text-shadow: rgba(0, 0, 0, .3) 1px 1px 1px;
+    text-underline-offset: 1px;
+    transition: all .2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100px;
+    word-break: break-word;
+    border: 0;
+  }
+
+  .buck_btn-del:active,
+  .buck_btn-del:focus {
+    border-bottom-style: none;
+    border-color: #dadada;
+    box-shadow: rgba(0, 0, 0, .3) 0 3px 3px inset;
+    outline: 0;
+  }
+
+  .buck_btn-del:hover {
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    transform: translateY(-2px);
+    opacity: 0.8;
+  }
+  .buck_input-val{
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .buck_delete {
+    background: #e62143;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    font-family: Mija,-apple-system,BlinkMacSystemFont,Roboto,"Roboto Slab","Droid Serif","Segoe UI",system-ui,Arial,sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 8px 10px;
+    text-decoration: none;
+    text-decoration-skip-ink: auto;
+    text-shadow: rgba(0, 0, 0, .3) 1px 1px 1px;
+    text-underline-offset: 1px;
+    transition: all .2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 120px;
+    word-break: break-word;
+    border: 0;
+  }
+
+  .buck_delete:active,
+  .buck_delete:focus {
+    border-bottom-style: none;
+    border-color: #dadada;
+    box-shadow: rgba(0, 0, 0, .3) 0 3px 3px inset;
+    outline: 0;
+  }
+
+  .buck_delete:hover {
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    transform: translateY(-2px);
+    opacity: 0.8;
+  }
+</style>
